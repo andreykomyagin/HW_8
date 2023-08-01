@@ -33,7 +33,7 @@ void Task54()
 {
     int n = Input("Введите количество строк: ");
     int m = Input("Введите количество столбцов: ");
-    int minPosition = 0;
+    int maxPosition = 0;
     int [,] matr = new int [n,m];
     FillArray(matr);
     PrintArray(matr);
@@ -43,22 +43,22 @@ void Task54()
     {
         for (int j = 0; j < m - 1; j++)
         {
-            minPosition = j;
+            maxPosition = j;
             for (int k = j + 1; k < m; k++)
             {
-                if ( matr[i, k] < matr[i, minPosition] )
+                if ( matr[i, k] > matr[i, maxPosition] )
                 {
-                    minPosition = k;
+                    maxPosition = k;
                 }
             }
             tempr = matr [i, j];
-            matr [i, j] = matr[i, minPosition];
-            matr[i, minPosition] = tempr;
+            matr [i, j] = matr[i, maxPosition];
+            matr[i, maxPosition] = tempr;
         }
     }
     PrintArray(matr);
 }
-//Task54();
+Task54();
 
 void Task56()
 {
@@ -128,4 +128,4 @@ void Task58()
     }
     PrintArray(matr);
 }
-Task58();
+//Task58();
