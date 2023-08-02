@@ -59,6 +59,8 @@ void Task54()
     PrintArray(matr);
 }
 Task54();
+Console.WriteLine("Следующая задача!");
+Console.WriteLine();
 
 void Task56()
 {
@@ -93,39 +95,35 @@ void Task56()
     Console.WriteLine($"{min_sum} - номер строки с наименьшей суммой");
 }
 
-//Task56();
-
+Task56();
+Console.WriteLine("Следующая задача!");
+Console.WriteLine();
 void Task58()
 {
-    int [,] matr = new int [4,4];
-    for (int i = 0; i < 4; i++)
+    int rows = 4;
+    int colomns = 4;
+    int [,] matr = new int [rows, colomns];
+    int delta_i = 0;
+    int delta_j = 1;
+    int i = 0;
+    int j = 0;
+    int steps = colomns;
+    int turns = 0;
+    for (int k = 0; k < matr.Length; k++)
     {
-        matr[0,i] = i + 1;
-    }
-    for (int i = 1; i < 4 ; i ++)
-    {
-        matr[i, 3] = 4 + i;
-    }
-    for (int i = 2; i >=0; i = i - 1)
-    {
-        matr[3, i] = matr[3, i+1] + 1;
-    }
-    for (int i = 2; i >0; i= i -1)
-    {
-        matr[i,0] = matr[i+1,0] + 1;
-    }
-    for (int i = 1; i < 3; i++)
-    {
-        matr[1,i] = matr[1,i-1]+1;
-    }
-    for(int i = 2; i <=2; i++)
-    {
-        matr[i,2]= matr[i-1,2]+1;
-    }
-    for(int i = 1; i >=1; i=i-1)
-    {
-        matr[2,i]= matr[2,i+1]+1;
+        matr[i, j] = k + 1;
+        steps--;
+        if (steps == 0)
+        {
+            steps = rows - 1 -turns/2;
+            turns++;
+            int temp = -delta_i;
+            delta_i = delta_j;
+            delta_j = temp;
+        }
+        i += delta_i;
+        j += delta_j;
     }
     PrintArray(matr);
 }
-//Task58();
+Task58();
